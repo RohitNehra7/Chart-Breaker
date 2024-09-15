@@ -1,0 +1,19 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "yarn workspace stock-market-gpt start",
+    "start:server": "yarn workspace stock-data-server start",
+    "start:client": "yarn workspace stock-market-gpt start",
+    "build": "yarn workspace stock-market-gpt build",
+    "dev": "concurrently \"yarn workspace stock-market-gpt start\" \"yarn workspace stock-data-server dev\""
+  },
+  "workspaces": [
+    "stock-market-gpt",
+    "stock-data-server"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
