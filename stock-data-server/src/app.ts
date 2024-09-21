@@ -1,14 +1,13 @@
-import express, { Request, Response } from 'express';
+import express, { Application, Request, Response } from 'express';
 import { PORT } from './config';
-import stockRoutes from './routes/stocks';
+import stockRoutes from './routes/stocksApiRouter';
 
-const app = express();
-
+const app: Application = express();
 app.use(express.json());  // Middleware to parse JSON bodies
-app.use('/api/stocks', stockRoutes);  // Register the stock-related routes
+app.use('/api/nse', stockRoutes);  // Register the stock-related routes
 
 app.get('/api', (req: Request, res: Response) => {
-  res.send(['Welcome to Stock API']);
+  res.send(['Welcome to Stock APIs']);
 });
 
 app.listen(PORT, () => {

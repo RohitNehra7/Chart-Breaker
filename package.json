@@ -6,6 +6,7 @@
     "start": "yarn workspace stock-market-gpt start",
     "start:server": "yarn workspace stock-data-server start",
     "start:client": "yarn workspace stock-market-gpt start",
+    "start:serverdev": "yarn workspace stock-data-server dev",
     "build": "yarn workspace stock-market-gpt build",
     "dev": "concurrently \"yarn workspace stock-market-gpt start\" \"yarn workspace stock-data-server dev\""
   },
