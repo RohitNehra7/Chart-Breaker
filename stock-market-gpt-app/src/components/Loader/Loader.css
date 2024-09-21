@@ -1,0 +1,10 @@
+/* Loader.css */
+
+.loader-container {
+    @apply flex items-center justify-center h-screen bg-gray-900; /* Adjust background color as needed */
+  }
+  
+  .loader-spinner {
+    @apply animate-spin h-12 w-12 text-blue-400; /* Spinner size and color */
+  }
+  

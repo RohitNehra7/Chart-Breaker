@@ -1,0 +1,58 @@
+/* HomePage.css */
+
+.home-container {
+  @apply bg-gray-900 min-h-screen flex flex-col items-center text-white pt-20; /* Added padding top */
+}
+
+.header {
+  @apply text-center mb-6;
+}
+
+.title {
+  @apply text-3xl font-bold mb-2 text-blue-400;
+}
+
+.reactive-text {
+  @apply text-lg font-medium text-blue-300 mb-4; /* Added margin bottom */
+}
+
+.search-bar-wrapper {
+  @apply w-full max-w-md mx-auto;
+}
+
+/* MarketIndicesTicker styles */
+.ticker-container {
+  @apply w-full bg-gray-800 p-2 rounded-md shadow-md mb-4; /* Background and padding */
+  overflow: hidden; /* Prevent overflow for responsiveness */
+}
+
+.ticker-content {
+  @apply flex space-x-4 whitespace-nowrap overflow-x-auto; /* Horizontal scrolling */
+  animation: ticker-scroll 10s linear infinite; /* Add animation for ticker scrolling */
+}
+
+.ticker-item {
+  @apply flex items-center text-sm; /* Align items */
+}
+
+.ticker-positive {
+  @apply text-green-500; /* Positive change color */
+}
+
+.ticker-negative {
+  @apply text-red-500; /* Negative change color */
+}
+
+.ticker-high-low {
+  @apply text-xs text-gray-400; /* Subtle color for high/low values */
+}
+
+/* Animation for scrolling */
+@keyframes ticker-scroll {
+  0% {
+      transform: translateX(100%); /* Start from right */
+  }
+  100% {
+      transform: translateX(-100%); /* End at left */
+  }
+}
