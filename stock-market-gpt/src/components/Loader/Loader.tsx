@@ -11,7 +11,15 @@ const Loader: React.FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
       >
-        <circle className="opacity-25" cx="12" cy="12" r="10" fill="none" strokeWidth="4" stroke="currentColor" />
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          fill="none"
+          strokeWidth="4"
+          stroke="currentColor"
+        />
         <path
           className="opacity-75"
           fill="currentColor"

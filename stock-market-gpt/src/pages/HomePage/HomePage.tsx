@@ -11,7 +11,11 @@ import DeliverablePercentageGraph from '../../components/DeliverableQuantiy/Deli
 const HomePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { indices, loading: indicesLoading, error: indicesError } = useSelector((state: RootState) => state.indices);
+  const {
+    indices,
+    loading: indicesLoading,
+    error: indicesError,
+  } = useSelector((state: RootState) => state.indices);
 
   useEffect(() => {
     dispatch(fetchIndices());
@@ -22,7 +26,9 @@ const HomePage: React.FC = () => {
   }
 
   if (indicesError) {
-    return <div className="text-red-500">Error fetching indices: {indicesError}</div>;
+    return (
+      <div className="text-red-500">Error fetching indices: {indicesError}</div>
+    );
   }
 
   return (

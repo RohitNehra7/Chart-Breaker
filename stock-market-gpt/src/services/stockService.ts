@@ -2,14 +2,22 @@
 import axios from 'axios';
 import { ApiResponse } from '../interfaces/apiResponse';
 import { StockMetadata } from '../interfaces/equityData.interface';
-import { MarketIndexData, StockSymbolData } from '../interfaces/marketIndex.interface';
-import { DeliverableData, DeliverableMetaData } from '../interfaces/historicalDataInterface';
+import {
+  MarketIndexData,
+  StockSymbolData,
+} from '../interfaces/marketIndex.interface';
+import {
+  DeliverableData,
+  DeliverableMetaData,
+} from '../interfaces/historicalDataInterface';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 export const fetchAllStockList = async (): Promise<StockMetadata[]> => {
   try {
-    const response = await axios.get<ApiResponse<StockMetadata[]>>(`${API_URL}/api/nse/allStockList`);
+    const response = await axios.get<ApiResponse<StockMetadata[]>>(
+      `${API_URL}/api/nse/allStockList`
+    );
     if (response.data.success && response.data.data) {
       return response.data.data;
     } else {
@@ -23,7 +31,9 @@ export const fetchAllStockList = async (): Promise<StockMetadata[]> => {
 
 export const fetchAllIndicesList = async (): Promise<MarketIndexData[]> => {
   try {
-    const response = await axios.get<ApiResponse<MarketIndexData[]>>(`${API_URL}/api/nse/allIndicesList`);
+    const response = await axios.get<ApiResponse<MarketIndexData[]>>(
+      `${API_URL}/api/nse/allIndicesList`
+    );
     console.log(response);
     if (response.data.success && response.data.data) {
       return response.data.data;
@@ -36,9 +46,13 @@ export const fetchAllIndicesList = async (): Promise<MarketIndexData[]> => {
   }
 };
 
-export const fetchAutoCompleteResults = async (query: string): Promise<StockSymbolData[]> => {
+export const fetchAutoCompleteResults = async (
+  query: string
+): Promise<StockSymbolData[]> => {
   try {
-    const response = await axios.get<ApiResponse<StockSymbolData[]>>(`${API_URL}/api/nse/autoComplete?query=${query}`);
+    const response = await axios.get<ApiResponse<StockSymbolData[]>>(
+      `${API_URL}/api/nse/autoComplete?query=${query}`
+    );
     if (response.data.success && response.data.data) {
       return response.data.data;
     } else {
@@ -50,9 +64,17 @@ export const fetchAutoCompleteResults = async (query: string): Promise<StockSymb
   }
 };
 
-export const getDelivereableQuantityData = async (from: string, to: string, symbol: string): Promise<{data: DeliverableData[], metaData: DeliverableMetaData}> => {
+export const getDelivereableQuantityData = async (
+  from: string,
+  to: string,
+  symbol: string
+): Promise<{ data: DeliverableData[]; metaData: DeliverableMetaData }> => {
   try {
-    const response = await axios.get<ApiResponse<{data: DeliverableData[], metaData: DeliverableMetaData}>>(`${API_URL}/api/nse//historical/deliverableQuantity?from=${from}&to=${to}&symbol=${symbol}`);
+    const response = await axios.get<
+      ApiResponse<{ data: DeliverableData[]; metaData: DeliverableMetaData }>
+    >(
+      `${API_URL}/api/nse//historical/deliverableQuantity?from=${from}&to=${to}&symbol=${symbol}`
+    );
     if (response.data.success && response.data.data) {
       return response.data.data;
     } else {

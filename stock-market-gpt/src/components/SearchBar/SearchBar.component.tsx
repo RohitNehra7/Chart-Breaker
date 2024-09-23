@@ -6,7 +6,9 @@ import { FiSearch } from 'react-icons/fi'; // Import search icon from react-icon
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = useState('');
-  const [autoCompleteResults, setAutoCompleteResults] = useState<StockSymbolData[]>([]);
+  const [autoCompleteResults, setAutoCompleteResults] = useState<
+    StockSymbolData[]
+  >([]);
   const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,9 @@ const SearchBar: React.FC = () => {
 
   useEffect(() => {
     const fetchResults = async () => {
-      const isSymbolSelected = autoCompleteResults.find((result) => result.symbol === query);
+      const isSymbolSelected = autoCompleteResults.find(
+        (result) => result.symbol === query
+      );
       if (!isSymbolSelected && query.length >= 1) {
         setError(null);
 
@@ -53,7 +57,10 @@ const SearchBar: React.FC = () => {
       {autoCompleteResults.length > 0 && (
         <ul className="dropdown-list">
           {autoCompleteResults.map((item) => (
-            <li key={item.symbol} onClick={() => handleOptionClick(item.symbol)}>
+            <li
+              key={item.symbol}
+              onClick={() => handleOptionClick(item.symbol)}
+            >
               <span className="symbol-name">{item.symbol}</span>
               <span className="symbol-info">{item.symbol_info}</span>
             </li>

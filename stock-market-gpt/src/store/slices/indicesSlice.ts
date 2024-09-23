@@ -14,9 +14,12 @@ const initialState: IndicesState = {
   error: null,
 };
 
-export const fetchIndices = createAsyncThunk('indices/fetchIndices', async () => {
-  return await fetchAllIndicesList();
-});
+export const fetchIndices = createAsyncThunk(
+  'indices/fetchIndices',
+  async () => {
+    return await fetchAllIndicesList();
+  }
+);
 
 const indicesSlice = createSlice({
   name: 'indices',
@@ -39,6 +42,7 @@ const indicesSlice = createSlice({
   },
 });
 
-export const selectIndices = (state: { indices: IndicesState }) => state.indices;
+export const selectIndices = (state: { indices: IndicesState }) =>
+  state.indices;
 
 export default indicesSlice.reducer;
