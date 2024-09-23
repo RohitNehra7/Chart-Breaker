@@ -36,15 +36,21 @@
     "@types/react-redux": "^7.1.33",
     "@types/redux": "^3.6.0",
     "@types/user-agents": "^1.0.4",
-    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.6.0",
+    "@typescript-eslint/parser": "^8.6.0",
+    "eslint": "^9.11.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "jest": "^27.0.0",
-    "prettier": "^2.0.0"
+    "prettier": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write 'stock-market-gpt/**/*.{ts,tsx}' 'stock-data-server/**/*.{ts,tsx}'",
+    "lint": "eslint 'stock-market-gpt/**/*.{ts,tsx}' 'stock-data-server/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
     "extends": [

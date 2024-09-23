@@ -8,7 +8,9 @@
     "start:client": "yarn workspace stock-market-gpt start",
     "start:serverdev": "yarn workspace stock-data-server dev",
     "build": "yarn workspace stock-market-gpt build",
-    "dev": "concurrently \"yarn workspace stock-market-gpt start\" \"yarn workspace stock-data-server dev\""
+    "dev": "concurrently \"yarn workspace stock-market-gpt start\" \"yarn workspace stock-data-server dev\"",
+    "format": "prettier --write 'stock-market-gpt/**/*.{ts,tsx}' 'stock-data-server/**/*.{ts,tsx}'",
+    "lint": "eslint 'stock-market-gpt/**/*.{ts,tsx}' 'stock-data-server/**/*.{ts,tsx}'"
   },
   "workspaces": [
     "stock-market-gpt",

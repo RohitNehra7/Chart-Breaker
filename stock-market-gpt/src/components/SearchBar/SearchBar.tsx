@@ -13,9 +13,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ stocks }) => {
 
   useEffect(() => {
     if (searchTerm) {
-      const results = stocks.filter(stock =>
-        stock.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        stock.identifier.toLowerCase().includes(searchTerm.toLowerCase())
+      const results = stocks.filter(
+        (stock) =>
+          stock.symbol.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          stock.identifier.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredStocks(results);
     } else {
@@ -47,10 +48,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ stocks }) => {
           />
         )}
         renderOption={(props, option, { selected }) => (
-          <li {...props} className={`dropdown-item ${selected ? 'selected' : ''}`}>
+          <li
+            {...props}
+            className={`dropdown-item ${selected ? 'selected' : ''}`}
+          >
             <div className="flex items-center space-x-3">
               <span className="symbol">{option.symbol}</span>
-              <span className="identifier text-sm text-gray-500">({option.identifier})</span>
+              <span className="identifier text-sm text-gray-500">
+                ({option.identifier})
+              </span>
             </div>
           </li>
         )}

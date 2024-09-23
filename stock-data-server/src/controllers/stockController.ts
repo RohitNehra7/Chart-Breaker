@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
-import { fetchIndicesList, fetchStockInfo, fetchStockList } from '../services/stockService';
+import {
+  fetchIndicesList,
+  fetchStockInfo,
+  fetchStockList,
+} from '../services/stockService';
 import { ApiResponse } from './apiResponse';
 import { StockMetadata } from '../interfaces/equityData.interface';
 import { MarketIndexData } from '../interfaces/marketIndex.interface';
@@ -10,8 +14,8 @@ export const getStockList = async (req: Request, res: Response) => {
     const stockList = await fetchStockList();
     const response: ApiResponse<StockMetadata[]> = {
       success: true,
-      data: stockList
-    }
+      data: stockList,
+    };
     res.json(response);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch stock list' });
@@ -23,8 +27,8 @@ export const getAllIndicesList = async (req: Request, res: Response) => {
     const indicesList = await fetchIndicesList();
     const response: ApiResponse<MarketIndexData[]> = {
       success: true,
-      data: indicesList
-    }
+      data: indicesList,
+    };
     res.json(response);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch indices list' });
