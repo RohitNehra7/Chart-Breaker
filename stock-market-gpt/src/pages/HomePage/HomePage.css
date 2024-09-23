@@ -27,6 +27,7 @@
 }
 
 /* Styles for the MarketIndicesTicker */
-.ticker-container {
-  @apply w-full bg-gray-800 p-4 rounded-md shadow-md mb-6 fixed; /* Added position relative */
+.ticker-container-wrapper {
+  @apply bg-gray-800 p-4 rounded-md shadow-md mb-6 relative;
+  width: 100%; /* Use -webkit-fill-available for width */
 }

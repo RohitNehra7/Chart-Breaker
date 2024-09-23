@@ -1,53 +1,49 @@
 .ticker-container {
-    @apply bg-gray-800 py-2 overflow-hidden relative; /* Ensure overflow is hidden */
+    @apply bg-gray-800 py-2 overflow-hidden relative; 
     display: flex;
-    align-items: flex-start; /* Align items to the top */
-    padding-left: 1rem; /* Add left padding */
+    align-items: flex-start; 
+    padding: 0 1rem; 
+    margin-bottom: 1rem; 
 }
 
 .ticker-content {
-    @apply flex whitespace-nowrap; /* Flex layout for horizontal scrolling */
-    animation: scroll 25s linear infinite; /* Adjust speed as needed */
-    margin-left: 1rem; /* Space between dropdown and tickers */
+    @apply flex whitespace-nowrap; 
+    animation: scroll 25s linear infinite; 
+    margin-left: 1rem; 
 }
 
 .ticker-container:hover .ticker-content {
-    animation-play-state: paused; /* Pause scrolling on hover */
+    animation-play-state: paused; 
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(0); /* Start at the initial position */
-    }
-    100% {
-        transform: translateX(-50%); /* Move left by half of the total width */
-    }
-}.ticker-container {
-    @apply bg-gray-800 py-2 overflow-hidden relative; /* Ensure overflow is hidden */
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.loader {
     display: flex;
-    align-items: flex-start; /* Align items to the top */
-    padding: 0 1rem; /* Add horizontal padding */
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); 
+    z-index: 10; 
 }
 
-.filter-wrapper {
-    @apply mb-4; /* Margin below for spacing */
-    position: fixed; /* Position it in the top left */
-    top: 0.5rem; /* Distance from the top */
-    left: 1rem; /* Distance from the left */
+.refresh-button-container {
+    display: flex;
+    justify-content: center; /* Center the button */
+    margin-top: 1rem; /* Space above the button */
 }
 
-.filter-dropdown {
-    @apply bg-gray-700 text-white border border-gray-600 rounded-md p-2 transition-all; /* Rounded corners and padding */
-    font-size: 0.875rem; /* Smaller font size */
-    width: 150px; /* Specific width */
+.refresh-button {
+    @apply bg-gray-500 text-white font-semibold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out; /* Tailwind styles */
 }
 
-.filter-dropdown:hover {
-    @apply bg-gray-600; /* Change background on hover */
+.refresh-button:hover {
+    @apply bg-gray-700; /* Darker shade on hover */
 }
-
-.filter-dropdown:focus {
-    @apply outline-none ring-2 ring-blue-500; /* Focus ring effect */
-    @apply shadow-md; /* Add a shadow for depth */
-}
-

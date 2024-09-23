@@ -212,7 +212,7 @@ export class NseIndia {
       range = { start: new Date(data.metadata.listingDate), end: new Date() };
     }
     const dateRanges = getDateRangeChunks(range.start, range.end, 66);
-    const promises = dateRanges.map(async (dateRange) => {
+    const promises = dateRanges.map(async dateRange => {
       const url =
         `/api/historical/cm/equity?symbol=${encodeURIComponent(symbol.toUpperCase())}` +
         `&series=[%22${activeSeries}%22]&from=${dateRange.start}&to=${dateRange.end}`;
@@ -267,7 +267,7 @@ export class NseIndia {
     range: DateRange
   ): Promise<IndexHistoricalData[]> {
     const dateRanges = getDateRangeChunks(range.start, range.end, 66);
-    const promises = dateRanges.map(async (dateRange) => {
+    const promises = dateRanges.map(async dateRange => {
       const url =
         `/api/historical/indicesHistory?indexType=${encodeURIComponent(index.toUpperCase())}` +
         `&from=${dateRange.start}&to=${dateRange.end}`;

@@ -11,31 +11,12 @@ import DeliverablePercentageGraph from '../../components/DeliverableQuantiy/Deli
 const HomePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const {
-    indices,
-    loading: indicesLoading,
-    error: indicesError,
-  } = useSelector((state: RootState) => state.indices);
-
-  useEffect(() => {
-    dispatch(fetchIndices());
-  }, [dispatch]);
-
-  if (indicesLoading) {
-    return <Loader />;
-  }
-
-  if (indicesError) {
-    return (
-      <div className="text-red-500">Error fetching indices: {indicesError}</div>
-    );
-  }
-
   return (
     <div className="home-container">
       {/* Move the ticker component to the top */}
-      <MarketIndicesTicker indicesData={indices} />
-
+      <div className='ticker-container-wrapper'>
+        <MarketIndicesTicker />
+      </div>
       <header className="header">
         <h1 className="title">Stock GPT</h1>
         <p className="reactive-text">Find your favorite stocks quickly!</p>

@@ -1,13 +1,12 @@
-/* Ticker item container */
 .ticker-item {
-    @apply inline-flex items-center mx-2 p-2; /* Reduce padding and margin */
-    min-width: 100px; /* Reduce width */
-    flex-direction: column; /* Vertical layout */
-    border-radius: 8px; /* Smaller rounded corners */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    background: white; /* Clean white background */
-    transition: transform 0.2s ease; /* Smooth hover effect */
-  }
+  @apply inline-flex items-center mx-2 p-2 relative; /* Ensure relative positioning */
+  min-width: 100px; /* Reduce width */
+  flex-direction: column; /* Vertical layout */
+  border-radius: 8px; /* Smaller rounded corners */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background: white; /* Clean white background */
+  transition: transform 0.2s ease; /* Smooth hover effect */
+}
   
   /* Box containing the index info */
   .ticker-box {
@@ -61,4 +60,5 @@
   .ticker-item:hover {
     @apply transform scale-105 shadow-md; /* Slightly smaller hover effect */
   }
+
   
