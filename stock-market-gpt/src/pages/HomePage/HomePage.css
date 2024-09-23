@@ -1,58 +1,32 @@
 /* HomePage.css */
 
 .home-container {
-  @apply bg-gray-900 min-h-screen flex flex-col items-center text-white pt-20; /* Added padding top */
+  @apply bg-gray-900 min-h-screen flex flex-col items-center text-white pt-5; /* Removed padding top */
 }
 
 .header {
-  @apply text-center mb-6;
+  @apply text-center mb-6 max-w-4xl; /* Added max-width for better alignment */
+  transition: background-color 0.3s ease; /* Transition effect for background */
+}
+
+.header:hover {
+  @apply bg-gray-800; /* Using an existing Tailwind gray class */
 }
 
 .title {
-  @apply text-3xl font-bold mb-2 text-blue-400;
+  @apply text-4xl font-bold mt-4 mb-2 text-blue-400; /* Added margin-top for spacing */
 }
 
+
 .reactive-text {
-  @apply text-lg font-medium text-blue-300 mb-4; /* Added margin bottom */
+  @apply text-lg font-medium text-blue-300 mb-4; /* Spacing below the text */
 }
 
 .search-bar-wrapper {
-  @apply w-full max-w-md mx-auto;
+  @apply w-full max-w-md mx-auto mt-4; /* Added margin top */
 }
 
-/* MarketIndicesTicker styles */
+/* Styles for the MarketIndicesTicker */
 .ticker-container {
-  @apply w-full bg-gray-800 p-2 rounded-md shadow-md mb-4; /* Background and padding */
-  overflow: hidden; /* Prevent overflow for responsiveness */
-}
-
-.ticker-content {
-  @apply flex space-x-4 whitespace-nowrap overflow-x-auto; /* Horizontal scrolling */
-  animation: ticker-scroll 10s linear infinite; /* Add animation for ticker scrolling */
-}
-
-.ticker-item {
-  @apply flex items-center text-sm; /* Align items */
-}
-
-.ticker-positive {
-  @apply text-green-500; /* Positive change color */
-}
-
-.ticker-negative {
-  @apply text-red-500; /* Negative change color */
-}
-
-.ticker-high-low {
-  @apply text-xs text-gray-400; /* Subtle color for high/low values */
-}
-
-/* Animation for scrolling */
-@keyframes ticker-scroll {
-  0% {
-      transform: translateX(100%); /* Start from right */
-  }
-  100% {
-      transform: translateX(-100%); /* End at left */
-  }
+  @apply w-full bg-gray-800 p-4 rounded-md shadow-md mb-6 fixed; /* Added position relative */
 }

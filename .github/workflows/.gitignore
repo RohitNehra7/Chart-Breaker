@@ -1,0 +1,4 @@
+node_modules/
+stock-data-server/node_modules/
+stock-market-gpt/node_modules/
+stock-market-gpt/build/

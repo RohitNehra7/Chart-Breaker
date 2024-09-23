@@ -1,0 +1,35 @@
+.search-bar-container {
+  @apply relative w-full max-w-lg mx-auto mt-5;
+}
+
+.search-input-wrapper {
+  @apply bg-gray-100 text-gray-800 rounded-lg p-3 shadow-md flex items-center border border-gray-300;
+}
+
+.search-input {
+  @apply w-full p-2 border-0 focus:outline-none text-gray-800 bg-gray-100 text-base;
+}
+
+.search-icon {
+  @apply text-gray-500 text-xl mr-2; /* Search icon styling */
+}
+
+.error-message {
+  @apply text-red-500 text-xs mt-1 font-semibold;
+}
+
+.dropdown-list {
+  @apply list-none p-0 m-0 border border-gray-300 rounded-lg bg-white max-h-60 overflow-auto shadow-lg z-10 mt-1;
+}
+
+.dropdown-list li {
+  @apply p-3 hover:bg-gray-200 transition duration-200 ease-in-out cursor-pointer text-gray-800 flex flex-col;
+}
+
+.symbol-name {
+  @apply text-base font-bold text-blue-600; /* Changed from text-md to text-base */
+}
+
+.symbol-info {
+  @apply text-sm text-gray-600;
+}

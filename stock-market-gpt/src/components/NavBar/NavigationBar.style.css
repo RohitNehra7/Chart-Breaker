@@ -1,0 +1,31 @@
+/* src/components/NavigationBar.css */
+
+.navbar {
+    background-color: #1f2937; /* Dark background */
+    padding: 1rem 0; /* Increase vertical padding */
+}
+
+.nav-link, .mobile-link {
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1.2rem; /* Increase font size for links */
+}
+
+.nav-link:hover, .mobile-link:hover {
+    color: #60a5fa; /* Light blue on hover */
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ffffff; /* White color for the button */
+    font-size: 1.5rem; /* Increase size of the menu button */
+}
+
+.container {
+    max-width: 1200px; /* Adjust the max width */
+    margin: 0 auto;
+    padding: 0 1rem; /* Add some horizontal padding */
+}

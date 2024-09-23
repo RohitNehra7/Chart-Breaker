@@ -1,47 +1,64 @@
+/* Ticker item container */
 .ticker-item {
-    @apply inline-flex items-center mx-6; /* Spacing between items */
-    min-width: 200px; /* Set a minimum width for each item */
-}
-
-.ticker-box {
-    @apply p-2 rounded-md shadow-md flex flex-col items-center transition-all; /* Reduced padding for smaller box */
-    overflow: hidden; /* Prevent overflow */
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-.index-name {
-    @apply text-sm font-bold text-gray-900; /* Smaller size for index name */
-    transition: color 0.3s; /* Smooth transition for color */
-}
-
-.percentage-change {
-    @apply flex items-center text-lg font-bold mt-1; /* Adjusted for slightly smaller size */
-    color: theme('colors.green.700'); /* Darker green for positive */
-    color: theme('colors.red.700'); /* Darker red for negative */
-}
-
-.arrow-up {
-    @apply text-green-700 text-2xl font-bold mr-1; /* Darker green arrow for positive change */
-}
-
-.arrow-down {
-    @apply text-red-700 text-2xl font-bold mr-1; /* Darker red arrow for negative change */
-}
-
-.high-low {
-    @apply text-xs font-bold text-gray-800 mt-1; /* Smaller size and bold for high/low price */
-}
-
-/* Light bluish-green gradient for positives */
-.ticker-positive {
-    @apply text-blue-800 bg-gradient-to-r from-blue-100 to-blue-200; /* Light bluish-green gradient */
-}
-
-/* Light bluish-red gradient for negatives */
-.ticker-negative {
-    @apply text-red-800 bg-gradient-to-r from-red-100 to-red-200; /* Light bluish-red gradient */
-}
-
-.ticker-box:hover {
-    @apply transform scale-105; /* Slightly enlarge on hover */
-}
+    @apply inline-flex items-center mx-2 p-2; /* Reduce padding and margin */
+    min-width: 100px; /* Reduce width */
+    flex-direction: column; /* Vertical layout */
+    border-radius: 8px; /* Smaller rounded corners */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: white; /* Clean white background */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+  }
+  
+  /* Box containing the index info */
+  .ticker-box {
+    @apply flex flex-col items-center justify-center; /* Center everything */
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+  }
+  
+  /* Index name styling */
+  .index-name {
+    @apply text-xs font-bold text-gray-900 mb-1; /* Smaller font size, less margin */
+    transition: color 0.3s;
+  }
+  
+  /* Percentage change and last price */
+  .percentage-change {
+    @apply flex items-center text-xs font-bold; /* Smaller font size */
+  }
+  
+  /* Arrow for positive change */
+  .positive .arrow {
+    @apply text-green-600 text-xs mr-1; /* Smaller arrow */
+  }
+  
+  /* Arrow for negative change */
+  .negative .arrow {
+    @apply text-red-600 text-xs mr-1; /* Smaller arrow */
+  }
+  
+  /* Gradient for positive changes */
+  .ticker-positive {
+    @apply bg-gradient-to-b from-green-50 to-green-200 text-green-700; /* Light green gradient */
+  }
+  
+  /* Gradient for negative changes */
+  .ticker-negative {
+    @apply bg-gradient-to-b from-red-50 to-red-200 text-red-700; /* Light red gradient */
+  }
+  
+  /* Percentage text styling */
+  .positive .percentage-change {
+    @apply text-green-600; /* Green text for positive percentage */
+  }
+  
+  .negative .percentage-change {
+    @apply text-red-600; /* Red text for negative percentage */
+  }
+  
+  /* Hover effect on the ticker box */
+  .ticker-item:hover {
+    @apply transform scale-105 shadow-md; /* Slightly smaller hover effect */
+  }
+  

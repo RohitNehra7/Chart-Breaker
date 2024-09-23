@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
-import styles from './TickerItem.module.css'; // Import the CSS module
+import styles from './TickerItem.module.css';
 import { MarketIndexData } from '../../../interfaces/marketIndex.interface';
 
 interface TickerItemProps {
@@ -13,17 +13,17 @@ const TickerItem: React.FC<TickerItemProps> = ({ data }) => {
   return (
     <div className={`${styles['ticker-item']} ${isPositive ? styles['ticker-positive'] : styles['ticker-negative']}`}>
       <div className={styles['ticker-box']}>
+        {/* Index name at the top */}
         <span className={styles['index-name']}>{data.index}</span>
-        <span className={styles['percentage-change']}>
+
+        {/* Percentage change and last price */}
+        <span className={`${styles['percentage-change']} ${isPositive ? styles['positive'] : styles['negative']}`}>
           {isPositive ? (
-            <FaArrowUp className={styles['arrow-up']} />
+            <FaArrowUp className={styles['arrow']} />
           ) : (
-            <FaArrowDown className={styles['arrow-down']} />
+            <FaArrowDown className={styles['arrow']} />
           )}
-          {data.percentChange.toFixed(2)}%
-        </span>
-        <span className={styles['high-low']}>
-          High: {data.high.toFixed(2)} Low: {data.low.toFixed(2)}
+          {data.percentChange.toFixed(2)}% ({data.last.toFixed(2)})
         </span>
       </div>
     </div>

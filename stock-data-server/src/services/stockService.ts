@@ -2,8 +2,9 @@
 import axios from 'axios';
 import { NSE_API_URL } from '../config';
 import { ApiList, NseIndia } from '../nseHelper/nseHelper';
-import { StockMetadata } from '../interfaces/equityData.interface';
+import { StockMetadata, StockSymbolData } from '../interfaces/equityData.interface';
 import { MarketIndexData } from '../interfaces/marketIndex.interface';
+import { DeliverableData, DeliverableMetaData } from '../interfaces/historicalData.interface';
 
 const nseIndia = new NseIndia();
 
@@ -20,6 +21,17 @@ export async function fetchIndicesList(): Promise<MarketIndexData[]> {
   const stocksMetadata: MarketIndexData[] = response?.data;
   return stocksMetadata;
 };
+
+export async function fetchAutoCompleteResults(query: string): Promise<StockSymbolData[]> {
+  const response = await nseIndia.getDataByEndpoint(`${ApiList.AUTOCOMPLETE}${query}`);
+  const stockSymbolData: StockSymbolData[] = response?.symbols;
+  return stockSymbolData;
+}
+
+export async function fetchDeliverableQuantities(from: string, to: string, symbol: string): Promise<{data: DeliverableData[], metaData: DeliverableMetaData}> {
+  const response = await nseIndia.getDataByEndpoint(`${ApiList.DELIVERABLE_QUANTITY}from=${from}&to=${to}&symbol=${symbol}`);
+  return response;
+}
 
 // Fetch stock info from NSE API
 export const fetchStockInfo = async (symbol: string) => {

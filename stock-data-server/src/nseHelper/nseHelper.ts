@@ -28,7 +28,9 @@ export enum ApiList {
     MARKET_DATA_PRE_OPEN = '/api/market-data-pre-open?key=ALL',
     MERGED_DAILY_REPORTS_CAPITAL = '/api/merged-daily-reports?key=favCapital',
     MERGED_DAILY_REPORTS_DERIVATIVES = '/api/merged-daily-reports?key=favDerivatives',
-    MERGED_DAILY_REPORTS_DEBT = '/api/merged-daily-reports?key=favDebt'
+    MERGED_DAILY_REPORTS_DEBT = '/api/merged-daily-reports?key=favDebt',
+    AUTOCOMPLETE = '/api/search/autocomplete?q=',
+    DELIVERABLE_QUANTITY='/api/historical/securityArchives?dataType=deliverable&series=ALL&'
 }
 
 export class NseIndia {
@@ -92,6 +94,7 @@ export class NseIndia {
                 await sleep(500)
             }
             this.noOfConnections++
+            console.log(url);
             try {
                 const response = await axios.get(url, {
                     headers: {

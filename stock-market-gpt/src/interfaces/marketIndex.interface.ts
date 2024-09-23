@@ -33,3 +33,12 @@ export interface MarketIndexData {
     oneYearAgo: number;
   }
   
+  export interface StockSymbolData {
+    symbol: string;
+    symbol_info: string;
+    symbol_suggest: { input: string; weight: number }[];
+    result_type: string;
+    result_sub_type: string;
+    activeSeries: string[];
+    url: string;
+  }
