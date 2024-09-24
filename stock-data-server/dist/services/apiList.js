@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ApiList = void 0;
+var ApiList;
+(function (ApiList) {
+    ApiList["GLOSSARY"] = "/api/cmsContent?url=/glossary";
+    ApiList["HOLIDAY_TRADING"] = "/api/holiday-master?type=trading";
+    ApiList["HOLIDAY_CLEARING"] = "/api/holiday-master?type=clearing";
+    ApiList["MARKET_STATUS"] = "/api/marketStatus";
+    ApiList["MARKET_TURNOVER"] = "/api/market-turnover";
+    ApiList["ALL_INDICES"] = "/api/allIndices";
+    ApiList["INDEX_NAMES"] = "/api/index-names";
+    ApiList["CIRCULARS"] = "/api/circulars";
+    ApiList["LATEST_CIRCULARS"] = "/api/latest-circular";
+    ApiList["EQUITY_MASTER"] = "/api/equity-master";
+    ApiList["MARKET_DATA_PRE_OPEN"] = "/api/market-data-pre-open?key=ALL";
+    ApiList["MERGED_DAILY_REPORTS_CAPITAL"] = "/api/merged-daily-reports?key=favCapital";
+    ApiList["MERGED_DAILY_REPORTS_DERIVATIVES"] = "/api/merged-daily-reports?key=favDerivatives";
+    ApiList["MERGED_DAILY_REPORTS_DEBT"] = "/api/merged-daily-reports?key=favDebt";
+})(ApiList || (exports.ApiList = ApiList = {}));

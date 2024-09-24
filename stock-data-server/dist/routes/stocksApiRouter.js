@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const stockApiController_1 = require("../controllers/stockApiController");
+const router = (0, express_1.Router)();
+router.get('/allStocklist', stockApiController_1.getStockList);
+router.get('/allIndicesList', stockApiController_1.getAllIndicesList);
+router.get('/autoComplete', stockApiController_1.getAutoComplete);
+router.get('/historical/deliverableQuantity', stockApiController_1.getDeliverableQuantities);
+exports.default = router;
