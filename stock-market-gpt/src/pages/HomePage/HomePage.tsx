@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import SearchBar from '../../components/SearchBar/SearchBar.component';
-import Loader from '../../components/Loader/Loader';
 import MarketIndicesTicker from '../../components/MarketIndicesTicker/MarketIndicesTicker';
 import './HomePage.css';
-import { AppDispatch, RootState } from '../../store/store';
-import { fetchIndices } from '../../store/slices/indicesSlice';
-import DeliverablePercentageGraph from '../../components/DeliverableQuantiy/DeliverablePercentageGraph';
+import { AppDispatch } from '../../store/store';
+import DeliverablePercentageGraph from '../../components/DeliverableQuantiy/DeliverablePercentageAnalysis';
 
 const HomePage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -28,7 +26,7 @@ const HomePage: React.FC = () => {
       {/* Add the DeliverablePercentageGraph component here */}
       <div className="graph-container mt-4">
         {/* Pass the selected symbol from your application state or search bar to the graph component */}
-        <DeliverablePercentageGraph symbol={'RADICO'} />
+        <DeliverablePercentageGraph />
       </div>
     </div>
   );

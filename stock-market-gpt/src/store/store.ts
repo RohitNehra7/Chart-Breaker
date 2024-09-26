@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import indicesReducer from './slices/indicesSlice';
+import userSelectionReducer from './slices/userSelectionSlice'; // Import the userSelection reducer
 
 const store = configureStore({
   reducer: {
     indices: indicesReducer,
+    userSelection: userSelectionReducer, // Add the userSelection reducer
   },
 });
 

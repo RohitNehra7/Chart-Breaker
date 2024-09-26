@@ -3,13 +3,14 @@ import './SearchBar.style.css'; // Import the updated CSS file
 import { StockSymbolData } from '../../interfaces/marketIndex.interface';
 import { fetchAutoCompleteResults } from '../../services/stockService';
 import { FiSearch } from 'react-icons/fi'; // Import search icon from react-icons
+import { useDispatch } from 'react-redux'; // Import useDispatch hook
+import { setUserSelection } from '../../store/slices/userSelectionSlice'; // Import action
 
 const SearchBar: React.FC = () => {
   const [query, setQuery] = useState('');
-  const [autoCompleteResults, setAutoCompleteResults] = useState<
-    StockSymbolData[]
-  >([]);
+  const [autoCompleteResults, setAutoCompleteResults] = useState<StockSymbolData[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const dispatch = useDispatch(); // Initialize dispatch
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -17,6 +18,7 @@ const SearchBar: React.FC = () => {
 
   const handleOptionClick = (symbol: string) => {
     setQuery(symbol);
+    dispatch(setUserSelection({ symbolSelected: symbol })); // Dispatch action to set selection
   };
 
   useEffect(() => {
