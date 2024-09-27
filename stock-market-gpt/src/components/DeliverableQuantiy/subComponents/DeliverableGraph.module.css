@@ -1,0 +1,24 @@
+.graph-container {
+  @apply relative w-full h-[400px] p-4 rounded-lg;
+}
+
+.graph-container.light {
+  @apply bg-white text-black;
+}
+
+.graph-container.dark {
+  @apply bg-gray-800 text-white;
+}
+
+.line-chart {
+  @apply max-w-full;
+}
+
+@media (max-width: 600px) {
+  .graph-container {
+    @apply h-[400px];
+  }
+  .line-chart {
+    @apply w-full;
+  }
+}
