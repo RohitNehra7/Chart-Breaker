@@ -1,8 +1,10 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart, registerables, TooltipItem } from 'chart.js';
+import { useSelector } from 'react-redux';
 import { DeliverableData } from '../../../interfaces/historicalDataInterface';
-import './DeliverableGraph.style.css';
+import { selectSelectedTheme } from '../../../store/slices/userSelectionSlice';
+import styles from './DeliverableGraph.module.css';
 
 // Register all required components
 Chart.register(...registerables);
@@ -12,6 +14,8 @@ interface DeliverableGraphProps {
 }
 
 const DeliverableGraph: React.FC<DeliverableGraphProps> = ({ data }) => {
+  const selectedTheme = useSelector(selectSelectedTheme);
+
   const chartData = {
     labels: data.map((item) => item.COP_TRADED_DT),
     datasets: [
@@ -38,18 +42,18 @@ const DeliverableGraph: React.FC<DeliverableGraphProps> = ({ data }) => {
           font: {
             size: 14,
             weight: 'bold' as 'bold', // Correct type for weight
-            color: '#ffffff', // White text
+            color: selectedTheme === 'dark' ? '#ffffff' : '#000000', // Conditional text color
           },
         },
         ticks: {
           font: {
             size: 14,
             weight: 'bold' as 'bold', // Correct type for weight
-            color: '#ffffff', // White text
+            color: selectedTheme === 'dark' ? '#ffffff' : '#000000', // Conditional text color
           },
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.1)', // Light grey grid lines
+          color: selectedTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', // Conditional grid color
         },
       },
       x: {
@@ -59,18 +63,18 @@ const DeliverableGraph: React.FC<DeliverableGraphProps> = ({ data }) => {
           font: {
             size: 14,
             weight: 'bold' as 'bold', // Correct type for weight
-            color: '#ffffff', // White text
+            color: selectedTheme === 'dark' ? '#ffffff' : '#000000', // Conditional text color
           },
         },
         ticks: {
           font: {
             size: 14,
             weight: 'bold' as 'bold', // Correct type for weight
-            color: '#ffffff', // White text
+            color: selectedTheme === 'dark' ? '#ffffff' : '#000000', // Conditional text color
           },
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.1)', // Light grey grid lines
+          color: selectedTheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)', // Conditional grid color
         },
       },
     },
@@ -80,7 +84,7 @@ const DeliverableGraph: React.FC<DeliverableGraphProps> = ({ data }) => {
           font: {
             size: 14,
             weight: 'bold' as 'bold', // Correct type for weight
-            color: '#ffffff', // White text
+            color: selectedTheme === 'dark' ? '#ffffff' : '#000000', // Conditional text color
           },
         },
       },
@@ -103,8 +107,8 @@ const DeliverableGraph: React.FC<DeliverableGraphProps> = ({ data }) => {
   };
 
   return (
-    <div className="graph-container">
-      <Line data={chartData} options={options} height={300} className="line-chart" />
+    <div className={`${styles['graph-container']} ${selectedTheme === 'dark' ? styles.dark : styles.light}`}>
+      <Line data={chartData} options={options} height={300} className={styles['line-chart']} />
     </div>
   );
 };

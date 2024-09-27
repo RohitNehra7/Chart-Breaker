@@ -3,17 +3,17 @@ import {
   Button,
   CircularProgress,
   Typography,
-  Grid,
   Paper,
+  Grid,
 } from '@mui/material';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { DeliverableData } from '../../interfaces/historicalDataInterface';
 import { getDelivereableQuantityData } from '../../services/stockService';
-import './DeliverablePercentageAnalysis.style.css';
 import { useSelector } from 'react-redux';
-import { selectUserSelection } from '../../store/slices/userSelectionSlice';
+import { selectSymbolSelected, selectSelectedTheme } from '../../store/slices/userSelectionSlice';
 import DeliverableGraph from './subComponents/DeliverableGraph';
+import styles from './DeliverablePercentageAnalysis.module.css';
 
 // Register all required components
 dayjs.extend(customParseFormat);
@@ -30,8 +30,8 @@ const DeliverablePercentageAnalysis: React.FC = () => {
   const [selectedTimeFrame, setSelectedTimeFrame] = useState<string>('1w');
   const [loading, setLoading] = useState<boolean>(false);
 
-  const userSelection = useSelector(selectUserSelection);
-  const symbol = userSelection?.selection?.symbolSelected || '';
+  const symbol = useSelector(selectSymbolSelected) || '';
+  const selectedTheme = useSelector(selectSelectedTheme);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,7 +98,7 @@ const DeliverablePercentageAnalysis: React.FC = () => {
   };
 
   return (
-    <Paper elevation={3} className="paper-container">
+    <Paper elevation={3} className={`${styles['paper-container']} ${selectedTheme === 'dark' ? styles.dark : styles.light}`}>
       <Grid container spacing={2} className="mb-4">
         {timeFrames.map((timeFrame) => (
           <Grid item xs={6} sm={3} key={timeFrame.value}>
@@ -109,7 +109,7 @@ const DeliverablePercentageAnalysis: React.FC = () => {
               }
               color="primary"
               fullWidth
-              className="time-frame-button"
+              className={`${styles['time-frame-button']} ${selectedTheme === 'dark' ? styles.dark : styles.light} ${selectedTimeFrame === timeFrame.value ? styles.selected : ''}`}
             >
               {timeFrame.label}
             </Button>
@@ -123,7 +123,7 @@ const DeliverablePercentageAnalysis: React.FC = () => {
         </div>
       ) : (
         <>
-          <Typography variant="h4" gutterBottom className="graph-title">
+          <Typography variant="h4" gutterBottom className={`${styles['graph-title']} ${selectedTheme === 'dark' ? styles.dark : styles.light}`}>
             Deliverable Percentage Graph
           </Typography>
           <DeliverableGraph data={data} />

@@ -3,33 +3,37 @@
 }
 
 .search-input-wrapper {
-  @apply bg-gray-100 text-gray-800 rounded-lg p-3 shadow-md flex items-center border border-gray-300;
+  @apply bg-gray-100 text-gray-800 dark:bg-dark-secondary dark:text-dark-textPrimary rounded-lg p-3 shadow-md flex items-center border border-gray-300 dark:border-dark-border;
 }
 
 .search-input {
-  @apply w-full p-2 border-0 focus:outline-none text-gray-800 bg-gray-100 text-base;
+  @apply w-full p-2 border-0 focus:outline-none text-gray-800 dark:text-dark-textPrimary bg-gray-100 dark:bg-dark-secondary text-base;
 }
 
 .search-icon {
-  @apply text-gray-500 text-xl mr-2; /* Search icon styling */
+  @apply text-gray-500 dark:text-dark-textSecondary text-xl mr-2; /* Search icon styling */
 }
 
 .error-message {
-  @apply text-red-500 text-xs mt-1 font-semibold;
+  @apply text-red-500 dark:text-red-400 text-xs mt-1 font-semibold;
 }
 
 .dropdown-list {
-  @apply list-none p-0 m-0 border border-gray-300 rounded-lg bg-white max-h-60 overflow-auto shadow-lg z-10 mt-1;
+  @apply list-none p-0 m-0 border border-gray-300 dark:border-dark-border rounded-lg bg-white dark:bg-dark-background max-h-60 overflow-auto shadow-lg z-10 mt-1;
 }
 
 .dropdown-list li {
-  @apply p-3 hover:bg-gray-200 transition duration-200 ease-in-out cursor-pointer text-gray-800 flex flex-col;
+  @apply p-3 hover:bg-gray-200 dark:hover:bg-dark-secondary transition duration-200 ease-in-out cursor-pointer text-gray-800 dark:text-dark-textPrimary flex flex-col;
+}
+
+.dropdown-list li.selected {
+  @apply bg-gray-300 dark:bg-dark-secondary; /* Style for the selected option */
 }
 
 .symbol-name {
-  @apply text-base font-bold text-blue-600; /* Changed from text-md to text-base */
+  @apply text-base font-bold text-blue-600 dark:text-dark-primary; /* Changed from text-md to text-base */
 }
 
 .symbol-info {
-  @apply text-sm text-gray-600;
+  @apply text-sm text-gray-600 dark:text-dark-textSecondary;
 }

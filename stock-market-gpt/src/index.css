@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles */
+@layer utilities {
+  .animation-scroll {
+    @apply animate-scroll;
+  }
+}

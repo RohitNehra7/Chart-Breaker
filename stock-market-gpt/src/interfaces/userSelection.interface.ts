@@ -1,3 +1,4 @@
 export interface UserSelection {
-    symbolSelected: string;
+    symbolSelected?: string;
+    selectedTheme: 'light' | 'dark';
 }

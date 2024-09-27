@@ -1,91 +1,56 @@
-// src/components/NavigationBar.tsx
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './NavigationBar.style.css'; // Import the CSS file
+import { useSelector } from 'react-redux';
+import ThemeToggleButton from '../NavBar/subComponents/ThemeToggleButton';
+import './NavigationBar.style.css';
+import { selectSelectedTheme } from '../../store/slices/userSelectionSlice';
 
 const NavigationBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const selectedTheme = useSelector(selectSelectedTheme);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <nav className="navbar shadow-lg">
-      <div className="container flex justify-between items-center py-4">
-        {/* Text Logo */}
-        <div className="logo text-3xl font-bold text-white">
-          <span className="text-blue-400">Stock</span>{' '}
-          <span className="text-orange-400">GPT</span>
-        </div>
-        {/* Desktop Nav Links */}
-        <div className="nav-links hidden md:flex space-x-8">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-          <Link to="/portfolio-analysis" className="nav-link">
-            Portfolio Analysis
-          </Link>
-          <Link to="/ai-analysis" className="nav-link">
-            AI Analysis
-          </Link>
-        </div>
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="menu-button">
-            {isOpen ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg> // Cross icon
-            ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg> // Hamburger icon
-            )}
-          </button>
-        </div>
+    <nav className={`navbar ${selectedTheme === 'dark' ? 'navbar-dark' : 'navbar-light'}`}>
+      <div className="navbar-logo">Stock GPT</div>
+      <div className="navbar-links hidden md:flex">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+        <Link to="/portfolio-analysis" className="nav-link">
+          My Portfolio Analysis
+        </Link>
+        <Link to="/ai-analysis" className="nav-link">
+          AI Analysis
+        </Link>
       </div>
-      {/* Mobile Nav Links */}
+      <div className="navbar-actions">
+        <ThemeToggleButton />
+        <button className={`menu-toggle-button md:hidden ${selectedTheme === 'dark' ? 'menu-toggle-button-dark' : 'menu-toggle-button-light'}`} onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? '✖️' : '☰'}
+        </button>
+      </div>
       {isOpen && (
-        <div className="mobile-menu md:hidden flex flex-col space-y-4 bg-gray-800 p-4">
+        <div className="mobile-menu md:hidden">
           <Link to="/" className="mobile-link" onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <Link
-            to="/portfolio-analysis"
-            className="mobile-link"
-            onClick={() => setIsOpen(false)}
-          >
-            Portfolio Analysis
+          <Link to="/portfolio-analysis" className="mobile-link" onClick={() => setIsOpen(false)}>
+            My Portfolio Analysis
           </Link>
-          <Link
-            to="/ai-analysis"
-            className="mobile-link"
-            onClick={() => setIsOpen(false)}
-          >
+          <Link to="/ai-analysis" className="mobile-link" onClick={() => setIsOpen(false)}>
             AI Analysis
           </Link>
         </div>

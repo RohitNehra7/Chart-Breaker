@@ -1,31 +1,69 @@
-/* src/components/NavigationBar.css */
-
+/* Base styles for the navigation bar */
 .navbar {
-    background-color: #1f2937; /* Dark background */
-    padding: 1rem 0; /* Increase vertical padding */
-}
-
-.nav-link, .mobile-link {
-    color: #ffffff; /* White text */
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 1.2rem; /* Increase font size for links */
-}
-
-.nav-link:hover, .mobile-link:hover {
-    color: #60a5fa; /* Light blue on hover */
-}
-
-.menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #ffffff; /* White color for the button */
-    font-size: 1.5rem; /* Increase size of the menu button */
-}
-
-.container {
-    max-width: 1200px; /* Adjust the max width */
-    margin: 0 auto;
-    padding: 0 1rem; /* Add some horizontal padding */
-}
+    @apply p-4 flex justify-between items-center relative shadow-lg;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .navbar-light {
+    @apply bg-background text-textPrimary;
+  }
+  
+  .navbar-dark {
+    @apply bg-dark-background text-dark-textPrimary;
+  }
+  
+  .navbar-logo {
+    @apply text-2xl font-bold tracking-wide;
+  }
+  
+  .navbar-links {
+    @apply hidden md:flex space-x-6;
+  }
+  
+  .nav-link {
+    @apply text-inherit no-underline transition-colors duration-300 text-lg py-2 px-4 rounded-md;
+  }
+  
+  .nav-link:hover {
+    @apply bg-primary text-white transform scale-105 shadow-md;
+  }
+  
+  .navbar-actions {
+    @apply flex items-center space-x-4;
+  }
+  
+  .theme-toggle-button {
+    @apply text-xl p-2 rounded-full transition-colors duration-300;
+  }
+  
+  .theme-toggle-button-light {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+  
+  .theme-toggle-button-dark {
+    @apply bg-gray-700 text-gray-200 hover:bg-gray-600;
+  }
+  
+  .menu-toggle-button {
+    @apply text-xl p-2 rounded-full transition-colors duration-300;
+  }
+  
+  .menu-toggle-button-light {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+  
+  .menu-toggle-button-dark {
+    @apply bg-gray-700 text-gray-200 hover:bg-gray-600;
+  }
+  
+  .mobile-menu {
+    @apply flex flex-col gap-4 bg-inherit p-4 absolute top-full left-0 w-full z-50 shadow-lg;
+  }
+  
+  .mobile-link {
+    @apply text-inherit no-underline transition-colors duration-300 text-lg py-2 px-4 rounded-md;
+  }
+  
+  .mobile-link:hover {
+    @apply bg-secondary text-white transform scale-105 shadow-md;
+  }
