@@ -9,6 +9,7 @@ import {
 import {
   DeliverableData,
   DeliverableMetaData,
+  EquityHistoricalPriceData,
 } from '../interfaces/historicalDataInterface';
 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
@@ -34,7 +35,6 @@ export const fetchAllIndicesList = async (): Promise<MarketIndexData[]> => {
     const response = await axios.get<ApiResponse<MarketIndexData[]>>(
       `${API_URL}/api/nse/allIndicesList`
     );
-    console.log(response);
     if (response.data.success && response.data.data) {
       return response.data.data;
     } else {
@@ -73,12 +73,34 @@ export const getDelivereableQuantityData = async (
     const response = await axios.get<
       ApiResponse<{ data: DeliverableData[]; metaData: DeliverableMetaData }>
     >(
-      `${API_URL}/api/nse//historical/deliverableQuantity?from=${from}&to=${to}&symbol=${symbol}`
+      `${API_URL}/api/nse/historical/deliverableQuantity?from=${from}&to=${to}&symbol=${symbol}`
     );
     if (response.data.success && response.data.data) {
       return response.data.data;
     } else {
-      throw new Error('Failed to fetch indices list');
+      throw new Error('Failed to fetch delivery data');
+    }
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export const getPriceInformationData = async (
+  from: string,
+  to: string,
+  symbol: string
+): Promise<EquityHistoricalPriceData> => {
+  try {
+    const response = await axios.get<
+      ApiResponse<EquityHistoricalPriceData>
+    >(
+      `${API_URL}/api/nse/historical/stockPrices?from=${from}&to=${to}&symbol=${symbol}`
+    );
+    if (response.data.success && response.data.data) {
+      return response.data.data;
+    } else {
+      throw new Error('Failed to fetch price information data');
     }
   } catch (error) {
     console.error(error);

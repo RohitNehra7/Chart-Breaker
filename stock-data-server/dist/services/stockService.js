@@ -20,7 +20,6 @@ async function fetchStockList() {
 }
 async function fetchIndicesList() {
     const response = await nseIndia.getDataByEndpoint(nseHelper_1.ApiList.ALL_INDICES);
-    console.log(response);
     const stocksMetadata = response === null || response === void 0 ? void 0 : response.data;
     return stocksMetadata;
 }
