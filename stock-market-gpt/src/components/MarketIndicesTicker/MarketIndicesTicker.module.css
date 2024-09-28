@@ -1,3 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animation-scroll {
+  animation: scroll 20s linear infinite;
+}
+
 .ticker-container {
   @apply py-2 overflow-hidden relative flex items-start px-4 mb-4 w-full;
 }

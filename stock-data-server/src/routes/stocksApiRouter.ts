@@ -3,7 +3,7 @@ import {
   getAllIndicesList,
   getAutoComplete,
   getDeliverableQuantities,
-  getStockInfo,
+  getHistoricalStockPrices,
   getStockList,
 } from '../controllers/stockApiController';
 
@@ -13,5 +13,6 @@ router.get('/allStocklist', getStockList);
 router.get('/allIndicesList', getAllIndicesList);
 router.get('/autoComplete', getAutoComplete);
 router.get('/historical/deliverableQuantity', getDeliverableQuantities);
+router.get('/historical/stockPrices', getHistoricalStockPrices);
 
 export default router;

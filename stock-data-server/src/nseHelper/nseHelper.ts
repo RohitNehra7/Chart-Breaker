@@ -31,6 +31,7 @@ export enum ApiList {
   MERGED_DAILY_REPORTS_DEBT = '/api/merged-daily-reports?key=favDebt',
   AUTOCOMPLETE = '/api/search/autocomplete?q=',
   DELIVERABLE_QUANTITY = '/api/historical/securityArchives?dataType=deliverable&series=ALL&',
+  PRICE_INFO = '/api/historical/cm/equity?'
 }
 
 export class NseIndia {

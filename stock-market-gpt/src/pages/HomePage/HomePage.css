@@ -23,5 +23,5 @@
 }
 
 .graph-container {
-  @apply w-full max-w-4xl mt-4;
+  @apply w-full mt-4;
 }

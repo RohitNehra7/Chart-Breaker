@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import {
   fetchAutoCompleteResults,
   fetchDeliverableQuantities,
+  fetchHistoricalStockPrices,
   fetchIndicesList,
   fetchStockInfo,
   fetchStockList,
@@ -15,6 +16,7 @@ import { MarketIndexData } from '../interfaces/marketIndex.interface';
 import {
   DeliverableData,
   DeliverableMetaData,
+  EquityHistoricalPriceData,
 } from '../interfaces/historicalData.interface';
 
 // Get stock list
@@ -76,6 +78,24 @@ export const getDeliverableQuantities = async (req: Request, res: Response) => {
     res.json(response);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch deliverable quantity' });
+  }
+};
+
+export const getHistoricalStockPrices  = async (req: Request, res: Response) => {
+  const { from, to, symbol } = req.query;
+  try {
+    const priceData = await fetchHistoricalStockPrices(
+      from as string,
+      to as string,
+      symbol as string
+    );
+    const response: ApiResponse<EquityHistoricalPriceData> = {
+      success: true,
+      data: priceData,
+    };
+    res.json(response);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch price data' });
   }
 };
 

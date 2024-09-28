@@ -9,6 +9,7 @@ import { MarketIndexData } from '../interfaces/marketIndex.interface';
 import {
   DeliverableData,
   DeliverableMetaData,
+  EquityHistoricalPriceData,
 } from '../interfaces/historicalData.interface';
 
 const nseIndia = new NseIndia();
@@ -26,7 +27,6 @@ export async function fetchStockList(): Promise<StockMetadata[]> {
 
 export async function fetchIndicesList(): Promise<MarketIndexData[]> {
   const response = await nseIndia.getDataByEndpoint(ApiList.ALL_INDICES);
-  console.log(response);
   const stocksMetadata: MarketIndexData[] = response?.data;
   return stocksMetadata;
 }
@@ -48,6 +48,17 @@ export async function fetchDeliverableQuantities(
 ): Promise<{ data: DeliverableData[]; metaData: DeliverableMetaData }> {
   const response = await nseIndia.getDataByEndpoint(
     `${ApiList.DELIVERABLE_QUANTITY}from=${from}&to=${to}&symbol=${symbol}`
+  );
+  return response;
+}
+
+export async function fetchHistoricalStockPrices(
+  from: string,
+  to: string,
+  symbol: string
+): Promise<EquityHistoricalPriceData> {
+  const response = await nseIndia.getDataByEndpoint(
+    `${ApiList.PRICE_INFO}from=${from}&to=${to}&symbol=${symbol}`
   );
   return response;
 }

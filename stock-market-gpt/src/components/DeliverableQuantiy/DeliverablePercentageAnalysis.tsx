@@ -9,7 +9,7 @@ import {
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { DeliverableData } from '../../interfaces/historicalDataInterface';
-import { getDelivereableQuantityData } from '../../services/stockService';
+import { getDelivereableQuantityData, getPriceInformationData } from '../../services/stockService';
 import { useSelector } from 'react-redux';
 import { selectSymbolSelected, selectSelectedTheme } from '../../store/slices/userSelectionSlice';
 import DeliverableGraph from './subComponents/DeliverableGraph';
@@ -27,6 +27,7 @@ const timeFrames = [
 
 const DeliverablePercentageAnalysis: React.FC = () => {
   const [data, setData] = useState<DeliverableData[]>([]);
+  const [closingPrices, setClosingPrices] = useState<number[]>([]);
   const [selectedTimeFrame, setSelectedTimeFrame] = useState<string>('1w');
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -42,12 +43,13 @@ const DeliverablePercentageAnalysis: React.FC = () => {
       const from = getFromDate(selectedTimeFrame, to);
 
       try {
-        const result = await getDelivereableQuantityData(
-          from as string,
-          to,
-          symbol
-        );
-        setData(result.data);
+        const deliverableResult = await getDelivereableQuantityData(from as string, to, symbol);
+        setData(deliverableResult.data);
+
+        // the order of the closing prices should be reversed because the data is returned in opposite date order w.r.t deliverable data
+        const priceResult = await getPriceInformationData(from as string, to, symbol);
+        const closingPrices = priceResult.data.map(item => item.CH_CLOSING_PRICE).reverse();
+        setClosingPrices(closingPrices);
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
@@ -126,7 +128,7 @@ const DeliverablePercentageAnalysis: React.FC = () => {
           <Typography variant="h4" gutterBottom className={`${styles['graph-title']} ${selectedTheme === 'dark' ? styles.dark : styles.light}`}>
             Deliverable Percentage Graph
           </Typography>
-          <DeliverableGraph data={data} />
+          <DeliverableGraph data={data} closingPrices={closingPrices} />
         </>
       )}
     </Paper>

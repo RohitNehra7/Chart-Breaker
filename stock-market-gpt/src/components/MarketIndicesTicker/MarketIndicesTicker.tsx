@@ -13,10 +13,17 @@ const MarketIndicesTicker: React.FC = () => {
   const { indices, loading, error } = useSelector(selectIndices);
   const selectedTheme = useSelector(selectSelectedTheme);
   const [isRefreshing, setIsRefreshing] = useState(true); // Set initial state to true
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
     handleRefresh(); // Fetch indices on initial load
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!isRefreshing && indices.length > 0) {
+      setIsDataLoaded(true);
+    }
+  }, [isRefreshing, indices]);
 
   const marketIndicesData = indices.filter(
     (index) => index.key === 'BROAD MARKET INDICES'
@@ -47,7 +54,7 @@ const MarketIndicesTicker: React.FC = () => {
           </div>
         )}
         {error && <p className="text-red-500">Error: {error}</p>}
-        <div className={`${styles['ticker-content']} text-textPrimary dark:text-dark-textPrimary`}>
+        <div className={`${styles['ticker-content']} text-textPrimary dark:text-dark-textPrimary ${isDataLoaded ? styles['animation-scroll'] : ''}`}>
           {marketIndicesData.map((data) => (
             <TickerItem key={data.indexSymbol} data={data} />
           ))}
@@ -64,7 +71,7 @@ const MarketIndicesTicker: React.FC = () => {
           </div>
         )}
         {error && <p className="text-red-500">Error: {error}</p>}
-        <div className={`${styles['ticker-content']} text-textPrimary dark:text-dark-textPrimary`}>
+        <div className={`${styles['ticker-content']} text-textPrimary dark:text-dark-textPrimary ${isDataLoaded ? styles['animation-scroll'] : ''}`}>
           {sectoralIndices.map((data) => (
             <TickerItem key={data.indexSymbol} data={data} />
           ))}

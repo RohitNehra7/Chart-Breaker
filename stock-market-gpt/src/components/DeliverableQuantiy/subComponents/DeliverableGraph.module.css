@@ -22,3 +22,22 @@
     @apply w-full;
   }
 }
+
+/* Additional styles for chart elements */
+.chart-title,
+.chart-label,
+.chart-tick,
+.chart-grid {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.chart-title,
+.chart-label,
+.chart-tick {
+  color: var(--text-color);
+}
+
+.chart-grid {
+  color: var(--grid-color);
+}
